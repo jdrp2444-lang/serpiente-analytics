@@ -1,4 +1,4 @@
-const GA_MEASUREMENT_ID = "G-XXXXXXXXXX";
+const GA_MEASUREMENT_ID = "G-P49GZ44WM7";
 
 document.addEventListener("DOMContentLoaded", () => {
   let gameStarted = false;
