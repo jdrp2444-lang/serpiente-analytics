@@ -1,60 +1,49 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es">    
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Serpiente</title>
-<link rel="stylesheet" href="css/styles.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Serpiente Analytics</title>
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-P49GZ44WM7"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-P49GZ44WM7');
+	</script>
+
+	<style>
+		body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:2rem;background:#f7f7f7;color:#111}
+		.container{max-width:700px;margin:0 auto;background:#fff;padding:1.5rem;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+		header h1{margin:0 0 .25rem}
+		section{margin:1rem 0}
+		.button-link{display:inline-block;padding:.6rem 1rem;background:#0b6efd;color:#fff;text-decoration:none;border-radius:6px}
+		.muted{color:#555;font-size:.95rem}
+	</style>
 </head>
-
 <body>
+	<div class="container">
+		<header>
+			<h1>Juan David Ramírez</h1>
+			<p class="muted">Desarrollador de software · Estudiante</p>
+		</header>
 
-<main class="wrap">
-  <header class="hud">
-    <div class="stat">
-      <span class="stat-label">Puntos</span>
-      <span class="stat-value" id="score">0</span>
-    </div>
-    <h1 class="title">Serpiente</h1>
-    <div class="stat right">
-      <span class="stat-label">Récord</span>
-      <span class="stat-value" id="best">0</span>
-    </div>
-  </header>
+		<section id="bio">
+			<h2>Bio</h2>
+			<p>Estudio desarrollo de software y disfruto construir proyectos por mi cuenta, ya sea para mi portafolio o como parte de la universidad. Los videojuegos son una de mis principales motivaciones, tanto jugarlos como entender cómo están hechos.</p>
+		</section>
 
-  <div class="board">
-    <canvas id="cv"></canvas>
+		<section id="contacto">
+			<h2>Contacto</h2>
+			<p>Correo: <a href="mailto:jdrp2444@gmail.com">jdrp2444@gmail.com</a></p>
+			<p>GitHub: <a href="https://github.com/jdrp2444-lang" target="_blank" rel="noopener">github.com/jdrp2444-lang</a></p>
+		</section>
 
-    <div class="screen" id="startScreen">
-      <h2>Come, crece, no te muerdas</h2>
-      <p>Guía la serpiente hasta la fruta. Cada bocado suma un punto y acelera el juego. Chocar con el borde o contigo mismo termina la partida.</p>
-      <button id="startBtn">Empezar a jugar</button>
-    </div>
-
-    <div class="screen" id="pauseScreen" hidden>
-      <h2>En pausa</h2>
-      <p>Pulsa espacio o el botón para continuar donde lo dejaste.</p>
-      <button id="resumeBtn">Continuar</button>
-    </div>
-
-    <div class="screen over" id="overScreen" hidden>
-      <h2 id="overTitle">Fin de la partida</h2>
-      <div class="final" id="finalScore">0</div>
-      <p id="overMsg">Chocaste contra el muro.</p>
-      <button id="againBtn">Jugar otra vez</button>
-    </div>
-  </div>
-
-  <div class="pad" id="pad">
-    <button data-dir="up" aria-label="Arriba">↑</button>
-    <button data-dir="left" aria-label="Izquierda">←</button>
-    <button data-dir="down" aria-label="Abajo">↓</button>
-    <button data-dir="right" aria-label="Derecha">→</button>
-  </div>
-
-  <p class="hint">Flechas o W A S D para moverte · Espacio para pausar</p>
-</main>
-<script src="js/game.js"></script>
-<script src="js/analytics.js"></script>
+		<p>
+			<a class="button-link" href="juego.html">Jugar</a>
+		</p>
+	</div>
 </body>
 </html>

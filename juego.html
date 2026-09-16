@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Serpiente</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P49GZ44WM7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-P49GZ44WM7');
+</script>
+
+<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<main class="wrap">
+  <header class="hud">
+    <div class="stat">
+      <span class="stat-label">Puntos</span>
+      <span class="stat-value" id="score">0</span>
+    </div>
+    <h1 class="title">Serpiente</h1>
+    <div class="stat right">
+      <span class="stat-label">Récord</span>
+      <span class="stat-value" id="best">0</span>
+    </div>
+  </header>
+
+  <div class="board">
+    <canvas id="cv"></canvas>
+
+    <div class="screen" id="startScreen">
+      <h2>Come, crece, no te muerdas</h2>
+      <p>Guía la serpiente hasta la fruta. Cada bocado suma un punto y acelera el juego. Chocar con el borde o contigo mismo termina la partida.</p>
+      <button id="startBtn">Empezar a jugar</button>
+    </div>
+
+    <div class="screen" id="pauseScreen" hidden>
+      <h2>En pausa</h2>
+      <p>Pulsa espacio o el botón para continuar donde lo dejaste.</p>
+      <button id="resumeBtn">Continuar</button>
+    </div>
+
+    <div class="screen over" id="overScreen" hidden>
+      <h2 id="overTitle">Fin de la partida</h2>
+      <div class="final" id="finalScore">0</div>
+      <p id="overMsg">Chocaste contra el muro.</p>
+      <button id="againBtn">Jugar otra vez</button>
+    </div>
+  </div>
+
+  <div class="pad" id="pad">
+    <button data-dir="up" aria-label="Arriba">↑</button>
+    <button data-dir="left" aria-label="Izquierda">←</button>
+    <button data-dir="down" aria-label="Abajo">↓</button>
+    <button data-dir="right" aria-label="Derecha">→</button>
+  </div>
+
+  <p class="hint">Flechas o W A S D para moverte · Espacio para pausar</p>
+</main>
+<script src="js/game.js"></script>
+<script src="js/analytics.js"></script>
+</body>
+</html>
