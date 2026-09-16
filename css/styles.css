@@ -1,0 +1,195 @@
+
+  :root{
+    --bg:#0E1020;
+    --bg-2:#141834;
+    --board:#0A0C1B;
+    --grid:rgba(160,175,255,.055);
+    --snake:#6FE3C4;
+    --snake-head:#B6F7E4;
+    --food:#FFB454;
+    --ink:#E7E9FF;
+    --ink-soft:#8E93C4;
+    --danger:#FF6B81;
+    --radius:18px;
+  }
+
+  *{box-sizing:border-box}
+
+  html,body{height:100%}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(900px 600px at 50% -10%, var(--bg-2), transparent 70%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"Avenir Next","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:clamp(12px,3vw,28px);
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  .wrap{
+    width:min(560px,100%);
+    display:flex;
+    flex-direction:column;
+    gap:clamp(10px,2vh,18px);
+  }
+
+  /* ---------- Marcador ---------- */
+  .hud{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    gap:12px;
+  }
+
+  .title{
+    margin:0;
+    font-size:clamp(17px,4.5vw,22px);
+    font-weight:600;
+    letter-spacing:.14em;
+    color:var(--ink-soft);
+  }
+
+  .stat{display:flex;flex-direction:column;line-height:1}
+  .stat.right{align-items:flex-end}
+
+  .stat-label{
+    font-size:11px;
+    letter-spacing:.06em;
+    color:var(--ink-soft);
+    margin-bottom:6px;
+  }
+
+  .stat-value{
+    font-size:clamp(26px,7vw,34px);
+    font-weight:700;
+    font-variant-numeric:tabular-nums;
+  }
+
+  #score{color:var(--snake)}
+
+  /* ---------- Tablero ---------- */
+  .board{
+    position:relative;
+    aspect-ratio:1/1;
+    width:100%;
+    border-radius:var(--radius);
+    background:var(--board);
+    border:1px solid rgba(160,175,255,.1);
+    box-shadow:0 24px 60px -30px rgba(0,0,0,.95), inset 0 0 70px rgba(111,227,196,.05);
+    overflow:hidden;
+    touch-action:none;
+  }
+
+  canvas{display:block;width:100%;height:100%}
+
+  /* ---------- Pantallas ---------- */
+  .screen{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    padding:24px;
+    text-align:center;
+    background:rgba(10,12,27,.86);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    transition:opacity .22s ease;
+  }
+
+  .screen[hidden]{display:none}
+
+  .screen h2{
+    margin:0;
+    font-size:clamp(22px,6vw,30px);
+    font-weight:700;
+    letter-spacing:.01em;
+  }
+
+  .screen p{
+    margin:0;
+    max-width:34ch;
+    color:var(--ink-soft);
+    font-size:clamp(13px,3.4vw,15px);
+    line-height:1.6;
+  }
+
+  .final{
+    font-size:clamp(40px,12vw,58px);
+    font-weight:700;
+    color:var(--food);
+    line-height:1;
+    font-variant-numeric:tabular-nums;
+  }
+
+  .over h2{color:var(--danger)}
+
+  button{
+    font:inherit;
+    cursor:pointer;
+    border:0;
+    color:var(--board);
+    background:var(--snake);
+    padding:13px 30px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:15px;
+    margin-top:4px;
+    transition:transform .12s ease, background .12s ease;
+  }
+
+  button:hover{background:var(--snake-head)}
+  button:active{transform:scale(.96)}
+  button:focus-visible,
+  .pad button:focus-visible{outline:2px solid var(--food);outline-offset:3px}
+
+  /* ---------- Controles táctiles ---------- */
+  .pad{
+    display:none;
+    grid-template-columns:repeat(3,1fr);
+    grid-template-areas:". up ." "left down right";
+    gap:8px;
+    max-width:250px;
+    margin:0 auto;
+    width:100%;
+  }
+
+  .pad button{
+    margin:0;
+    background:rgba(160,175,255,.08);
+    color:var(--ink);
+    border-radius:14px;
+    padding:16px 0;
+    font-size:19px;
+  }
+
+  .pad button:hover{background:rgba(160,175,255,.16)}
+
+  [data-dir="up"]{grid-area:up}
+  [data-dir="left"]{grid-area:left}
+  [data-dir="down"]{grid-area:down}
+  [data-dir="right"]{grid-area:right}
+
+  .hint{
+    margin:0;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:13px;
+    line-height:1.6;
+  }
+
+  @media (hover:none) and (pointer:coarse){
+    .pad{display:grid}
+    .hint{display:none}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important}
+  }
